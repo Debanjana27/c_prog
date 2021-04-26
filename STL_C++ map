@@ -1,0 +1,24 @@
+// C++  STL : Vector
+#include <iostream>
+#include <map>
+#include <algorithm>
+//this algorithm has various inbuilts:sort,binary_search,upper bound,lower bound etc....
+using namespace std;
+
+int main() {
+    //sets by defaul stores the inseted values in ascending order
+   map<int,int>S;
+   S[1]=100;
+   S[3]=10220;
+   S[4]=1200;
+   S[5]=1003;
+   map<char,int>cnt;
+   string x="Debanjana Mandal";
+   for(char c:x){
+       cnt[c]++;
+   }
+   //find the number of times a character is present in the string
+   cout<<cnt['a']<<" " <<cnt[
+      'z']<<endl;
+    return 0;
+}
