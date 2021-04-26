@@ -12,6 +12,10 @@ int main() {
    S.insert(9);
    S.insert(3);
    S.insert(12);
+   S.insert(12);
+   S.insert(12);
+   S.insert(12);
+   S.insert(12);
    S.erase(9);
    for(int x : S){
        cout<<x<<endl;
@@ -24,7 +28,8 @@ int main() {
    auto it2=S.upper_bound(3);
    auto it21=S.lower_bound(3);
    cout<<*it2<<" "<<*it21<<endl;
-   auto it4=S.upper_bound(-1);
+    //This upeer_bound and lower_bound only works if an element occurs number of times
+   auto it4=S.upper_bound(12);
    if(it4 == S.end())
    {
        cout<<"OOPs !!...Element not found"<<endl;
