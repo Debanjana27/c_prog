@@ -1,4 +1,4 @@
-// C++  STL : Vector
+// C++  STL : Set
 #include <iostream>
 #include <set>
 #include <algorithm>
