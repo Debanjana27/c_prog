@@ -1,0 +1,29 @@
+//this comparator operator(cmp) is used for priority queue or min heap concept which we have used in this program
+class cmp{
+    public:
+    bool operator()(pair<int,string> a, pair<int,string> b) const{
+        if(a.first < b.first) return true;//if the freq of first word(string) is less than the next/second string, then the bool value is true as we have to arrange the strings in such a way that the string with highest frequency comes first in the output. 
+        else if(a.first == b.first && a.second>b.second) return true;
+        //if the frequency of both the words are same , then the one which is lexicographically smaller comes first in the output string
+        
+        return false;
+    }
+};
+
+class Solution {
+public:
+    vector<string> topKFrequent(vector<string>& words, int k) {
+        unordered_map<string,int> ump;
+        for(auto &w : words) ump[w]++;//traverse through each words in the string and keep a count for it's freq using ump[w]++
+        //priority queue function
+        priority_queue<pair<int,string>,vector<pair<int,string>>,cmp> pq;
+        for(auto &m : ump) pq.push({m.second,m.first});
+        
+        vector<string> vec;
+        while(k--){
+            vec.push_back(pq.top().second);
+            pq.pop();
+        }
+        return vec;
+    }
+};
