@@ -1,0 +1,47 @@
+class Solution {
+public:
+    int dfs(int i, int j,vector<vector<int>>&grid){
+        //base case
+        if (i>=grid.size()){
+            return j;
+        }
+        //left to right
+        if(grid[i][j] == 1 && j + 1 < grid[0].size() && grid[i][j + 1] == 1){
+            return dfs(i + 1, j + 1, grid);
+        }
+        
+        // ball can move left if current board and previous board is towards left
+        if(grid[i][j] == -1 && j - 1 >= 0 && grid[i][j - 1] == -1){
+            return dfs(i + 1, j - 1, grid);
+        }
+        else if(grid[i][j]==1 && j+1>=grid[0].size())
+        {
+            return -1;
+        }
+        else{
+            return -1;
+        }
+    }
+    vector<int> findBall(vector<vector<int>>& grid) {
+     int row=grid.size();
+        int col=grid[0].size();
+        vector<int>ans(col); //column wise we are returning this answer as the number of balls is equal to the number of columns in the grid
+        for(int j=0;j<col;j++){
+           ans[j]=dfs(0,j,grid);
+        }
+    
+         return ans;
+    }  
+};
+==============================================================================================================================================================================================
+=======================================================================================================================================================================
+Explanation:
+        //left to right
+        if(grid[i][j]==1 && j+1<=grid[0].size() && grid[i][j+1]==1){//if the current and the next cell both have 1 as their value, then, the ball can move from left to right and the ball should the within the right most wall
+            return dfs(i+1,j+1,grid);//the lines k saath saath ball bhi aage hi jayegi\
+    }
+        //right to left
+    else if(grid[i][j]==-1 && j-1>=0 && grid[i][j-1]==-1){//for the line /, the ball will move from i,j to i,j-1 grid i.e. the ball will move from right to left
+        return dfs(i+1,j-1,grid)//ball moves from /
+        
+    
