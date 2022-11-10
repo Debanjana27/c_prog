@@ -1,0 +1,31 @@
+/*Input: s = "abbaca"
+Output: "ca"
+Explanation: 
+For example, in "abbaca" we could remove "bb" since the letters are adjacent and equal, 
+and this is the only possible move.  The result of this move is that the string is "aaca", of which only "aa" is possible, so the final string is "ca".*/
+
+Keep a res as a characters stack.
+Iterate characters of S one by one.
+
+If the next character is same as the last character in res,
+pop the last character from res.
+In this way, we remove a pair of adjacent duplicates characters.
+
+If the next character is different,
+we append it to the end of res.
+
+Code:
+
+class Solution {
+public:
+string removeDuplicates(string S) {
+        string res = "";
+        for(char c:S){
+        if(res.size() && c==res.back())
+        res.pop_back();
+        else
+        res.push_back(c);
+        }
+        return res;
+        }
+        };
