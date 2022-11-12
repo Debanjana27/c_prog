@@ -1,0 +1,10 @@
+class Solution{
+public:
+int LongestPallindrome(vector<string> &words){
+map<string,int>mp;
+int len=0;
+int ans=0;
+bool flag=false;
+for(auto word:words){
+mp[word]++;  //store the count of all words in map
+}
