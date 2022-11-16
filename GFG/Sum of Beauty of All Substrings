@@ -1,0 +1,22 @@
+class Solution {
+  public:
+    int beautySum(string s) {
+        int n=s.length(),sum=0;
+        for(int i=0;i<n;i++){
+        vector<int>freq(26,0);//26 elements in the english alphabet
+        freq[s[i]-'a']++;
+        for(int j=i+1;j<n;j++){
+        freq[s[j]-'a']++;
+         int minNum=INT_MAX;int maxNum=0;
+         for(int k=0;k<26;k++){
+             if(freq[k]){//if there exists a freq of elements in the k array
+             minNum=min(minNum,freq[k]);
+             maxNum=max(maxNum,freq[k]);
+             }
+        }
+        sum=sum+(maxNum-minNum);
+        }
+        }
+        return sum;
+    }
+};
