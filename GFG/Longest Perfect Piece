@@ -1,0 +1,18 @@
+Class Solution{
+public:
+int longestPerfectPiece(int arr[], int N) {
+        // code here
+        int max_ans=0;
+        int i=0;
+        while(i<N){
+            int j=i+1;
+            while(j<N && abs(arr[j]-arr[i])<=1){
+            j++;
+        }
+            max_ans=max(max_ans,j-i);
+            i=j;
+        }
+        
+       return max_ans;
+       }
+       };
