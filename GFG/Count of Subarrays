@@ -9,7 +9,7 @@ public:
 	            if (arr[j] > k) { //if the arr[j] element is greater than k, then all the
 //next contagious subarrays will also be valid subarrays because this element is already greater than k and is there in any array formed with this element
 //eg: [3]>k; then, [3,2]>k,[3,2,1]>1 as the max element here is 3
-	                ans += (n - j);
+	                ans += (n - j); // ans me add the size - index of the value which is greater than k
 	                break;
 	            }
 	        }
