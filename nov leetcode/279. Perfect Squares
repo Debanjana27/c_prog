@@ -1,0 +1,24 @@
+//https://leetcode.com/problems/perfect-squares/discuss/1520447/c%2B%2B-dp-easy-to-understand
+//https://www.youtube.com/watch?v=Zbn8in7hpXY
+
+
+class Solution{
+public:
+int numSquares(int n){
+vector<int>dp((n+1),INT_MAX); // create a dp vector with size (n+1) as we start from 0 index. So if the number is 12....then, 0,1,2,.......12 i.e. size of 13 and initialize 
+//with INT+MAX so everytime new element which is smaller than the previous comes we can put it in the dp
+//base case
+dp[0]=0;//for 0 the only possibility of squares addition to get 0 is 0
+int count=1;  //starting with 1
+while(count*count <=n){      // now get the next squares which is less than the number....1 , 4, 9....till whatever is less than the num. Say for 12,..1,4,9, is only possible
+//next square 16 is not possible.....
+int sq = count*count;
+for(int i = sq; i < n+1; i++) {
+            dp[i] = min(dp[i-sq] + 1,dp[i]);
+        }
+        count++;
+    }
+    return dp[n];
+    }
+};
+
