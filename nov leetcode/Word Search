@@ -1,3 +1,23 @@
+Approach
+          This is a very popular backtracking problem and is many times asked in faang interviews , although its not that difficult!!!
+          ------------------------------------------------------------------------------------- 
+          Let's understand the problem statement first!!!
+              we are given a matrix of (m x n) and we are required to check whether given word
+              exists in matrix or not!!!
+              NOTE : we can move in four directions(UP , DOWN , LEFT , RIGHT)
+          ------------------------------------------------------------------------------------- 
+          Solution :
+                As the word in matrix can start at any position so we have to check for all
+                positions whether each position can be a starting point!!
+                
+                Now the logic is simple for every call we have index variable which shows how
+                much chars of word are already found in current dfs call 
+                if at any point we found a mismatch between word[index] and baord[x][y] then that branch becomes invalid for us
+                
+                We use backtracking to make sure that each position/block of matrix 
+                is visited once in a branch!!![important][visited check]
+Code
+
 class Solution{
 public:
  bool exist(vector<vector<char>> &board, string word) {
@@ -9,4 +29,25 @@ public:
            }}
        return false;
    }
-
+bool dfs(int index, int x,int y,vecto<vector<int>>&board, int & word){
+//base case
+// means that we have already found similar characters upto n-1 index of string word i.e. we found all the characters. So we can return true
+if(index == word.size())
+return true;
+if(x<0 || y<0 ||x>board.size()||y>board[0].size()||board[x][y]=='.')// boundary check + visited check
+           return false;
+           if(board[x][y]!=word[index])
+           return false;
+  char temp =board[x][y];
+  board[x][y]='.';// marking it visited
+  // Move in 4 directions[UP , DOWN , LEFT , RIGHT]
+       if(dfs(index + 1 , x - 1 , y , board , word) or dfs(index + 1 , x + 1 , y , board , word) or dfs(index + 1 , x , y - 1 , board , word) or dfs(index + 1 , x , y + 1 , board , word))
+           return true;
+           
+       board[x][y] = temp; // backtrack step
+       return false;
+       
+   }
+   
+};
+  
