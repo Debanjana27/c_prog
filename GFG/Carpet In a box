@@ -1,0 +1,49 @@
+//User function Template for C++
+
+class Solution{
+    public:
+    int carpetBox(int A, int B, int C, int D){
+           int ans =0;
+
+        while(max(A,B)>max(C,D)){
+
+            if(A>B){
+
+                A = A/2;
+
+                ans++;
+
+            }
+
+            else{
+
+                B =B/2;
+
+                ans++;
+
+            }
+
+        }
+
+        while(min(A,B)>min(C,D)){
+
+            if(A<B){
+
+                A/=2;
+
+                ans++;
+
+            }
+
+            else{
+
+                B/=2;
+
+                ans++;
+
+            }
+
+        }
+        return ans;
+    }
+};
